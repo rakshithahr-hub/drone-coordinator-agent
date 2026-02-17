@@ -7,7 +7,7 @@ from coordinator_logic import check_assignment_conflicts, handle_urgent_reassign
 # --- STEP 1: DATABASE CONNECTION ---
 def get_gsheet_client():
     SCOPES = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
-   creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes=SCOPES)
+    creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes=SCOPES)
     return gspread.authorize(creds)
 
 client = get_gsheet_client()
@@ -80,3 +80,4 @@ if prompt := st.chat_input("Ex: Check conflicts for assigning Arjun"):
     st.session_state.messages.append({"role": "assistant", "content": response})
 
     st.chat_message("assistant").write(response)
+
